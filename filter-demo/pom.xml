@@ -14,6 +14,7 @@
     <packaging>jar</packaging>
 
     <dependencies>
+
         <dependency>
             <groupId>cn.lz.security</groupId>
             <artifactId>lz-security-filter-spring-boot-starter</artifactId>
@@ -22,6 +23,29 @@
         <dependency>
             <groupId>cn.lz.security</groupId>
             <artifactId>lz-security-plugins-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.lz.sdk.generate</groupId>
+            <artifactId>sdk-gen-plugin-spring-boot</artifactId>
+            <version>1.0.4</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
         </dependency>
     </dependencies>
 
