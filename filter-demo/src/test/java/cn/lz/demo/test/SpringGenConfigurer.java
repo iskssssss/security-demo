@@ -6,7 +6,6 @@ import cn.lz.sdk.generate.config.GenConfigurerBuilder;
 import cn.lz.sdk.generate.handler.IImportClassHandler;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -20,10 +19,8 @@ import java.util.List;
 public class SpringGenConfigurer extends GenConfigurerAdapter {
 
 	@Override
-	public List<String> controllerScanPaths() {
-		List<String> packagePaths = new LinkedList<>();
-		packagePaths.add("cn.lz.demo.filter.controller");
-		return packagePaths;
+	public void controllerScanPaths(List<String> controllerScanPathList) {
+		controllerScanPathList.add("cn.lz.demo.filter.controller");
 	}
 
 	@Override

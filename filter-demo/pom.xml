@@ -27,8 +27,8 @@
 
         <dependency>
             <groupId>cn.lz.sdk.generate</groupId>
-            <artifactId>sdk-gen-plugin-spring-boot</artifactId>
-            <version>1.0.4</version>
+            <artifactId>sdk-gen-spring-boot</artifactId>
+            <version>2.0.0</version>
             <scope>test</scope>
         </dependency>
 
