@@ -16,7 +16,7 @@ public class LoginCriteria extends BaseModel {
 	private String username;
 
 	@ApiModelProperty(value = "密码", required = true)
-	private String pwd;
+	private String password;
 
 	public String getUsername() {
 		return username;
@@ -26,19 +26,19 @@ public class LoginCriteria extends BaseModel {
 		this.username = username;
 	}
 
-	public String getPwd() {
-		return pwd;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
 	public String toString() {
 		return "LoginCriteria{" +
 				"username='" + username + '\'' +
-				", pwd='" + pwd + '\'' +
+				", password='" + password + '\'' +
 				'}';
 	}
 }

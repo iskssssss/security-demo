@@ -1,9 +1,9 @@
 package cn.lz.demo.filter.controller;
 
+import cn.lz.demo.filter.model.DefaultAuthDetails;
 import cn.lz.demo.filter.model.R;
 import cn.lz.security.annotation.DataEncodeSwitch;
 import cn.lz.security.annotation.IncludeInterface;
-import cn.lz.security.defaults.DefaultAuthDetails;
 import cn.lz.security.log.LzLoggerUtil;
 import cn.lz.security.token.AccessTokenUtil;
 import io.swagger.annotations.Api;

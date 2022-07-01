@@ -5,6 +5,7 @@ import cn.lz.security.context.model.BaseRequest;
 import cn.lz.security.context.model.BaseResponse;
 import cn.lz.security.log.BaseFilterLogHandler;
 import cn.lz.security.log.LzLoggerUtil;
+import cn.lz.security.tool.context.LzSpringBootContextManager;
 import org.springframework.stereotype.Component;
 
 /**
@@ -25,7 +26,7 @@ public class TestFilterLogHandler implements BaseFilterLogHandler {
 
 	@Override
 	public void after(BaseRequest<?> request, BaseResponse<?> response, Object logEntity, Exception ex) {
-		LzLoggerUtil.info(getClass(), "本次请求总时间：" + LzCoreManager.getStorage().getRequestTime().toString());
+		LzLoggerUtil.info(getClass(), "本次请求总时间：" + LzSpringBootContextManager.getStorage().getRequestTime().toString());
 		LzLoggerUtil.info(getClass(), "自定义日志处理：afterHandler(...)");
 		LzLoggerUtil.info(getClass(), "=====================================================================================");
 	}

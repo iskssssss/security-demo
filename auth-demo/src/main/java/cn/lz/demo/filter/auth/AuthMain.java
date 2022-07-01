@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
  * @date 2021/11/02 15:52
  */
 @SpringBootApplication
+@ComponentScan("cn.lz.**")
 @ComponentScan(excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = ControllerAdvice.class)})
 public class AuthMain {
 

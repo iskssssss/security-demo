@@ -4,6 +4,8 @@ import cn.lz.demo.filter.model.R;
 import cn.lz.security.LzCoreManager;
 import cn.lz.security.annotation.DataEncodeSwitch;
 import cn.lz.security.annotation.ExcludeInterface;
+import cn.lz.security.config.EncryptConfig;
+import cn.lz.security.config.LzConfig;
 import cn.lz.tool.encrypt.model.SwPublicKey;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -32,7 +34,7 @@ public class SecurityController {
     public R<String> decrypt(
             @RequestParam("encryptText") String encryptText
     ) {
-        final SwPublicKey publicKey = LzCoreManager.getLzConfig().getEncryptConfig().getPublicKeyStr();
+        final SwPublicKey publicKey = LzCoreManager.getEncryptConfig().getPublicKey();
         final Object decrypt = publicKey.decrypt(encryptText);
         return R.success(decrypt.toString());
     }
@@ -45,8 +47,8 @@ public class SecurityController {
     public R<Object> encrypt(
             @RequestParam("decryptText") String decryptText
     ) {
-        final SwPublicKey publicKey = LzCoreManager.getLzConfig().getEncryptConfig().getPublicKeyStr();
+        final SwPublicKey publicKey = LzCoreManager.getEncryptConfig().getPublicKey();
         final String decrypt = publicKey.encrypt(decryptText);
-        return R.success(decrypt.toString());
+        return R.success(decrypt);
     }
 }

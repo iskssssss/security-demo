@@ -2,7 +2,6 @@ package cn.lz.demo.filter.config.security.handler;
 
 import cn.lz.demo.filter.model.R;
 import cn.lz.security.defaults.DefaultDataEncoder;
-import cn.lz.security.utils.ServletUtil;
 import cn.lz.tool.core.bytes.ByteUtil;
 import cn.lz.tool.core.string.StringUtil;
 import cn.lz.tool.json.JsonUtil;

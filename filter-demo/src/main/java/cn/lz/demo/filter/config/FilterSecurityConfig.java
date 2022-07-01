@@ -8,7 +8,6 @@ import cn.lz.security.config.CoreConfigurerBuilder;
 import cn.lz.security.filter.config.FilterConfigurer;
 import cn.lz.security.filter.config.FilterConfigurerBuilder;
 import cn.lz.security.filter.config.SecurityFilterConfigurerAdapter;
-import cn.lz.security.filter.filters.StartFilter;
 import cn.lz.security.filter.utils.FilterUtil;
 import org.springframework.context.annotation.Configuration;
 

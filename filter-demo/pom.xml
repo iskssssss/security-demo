@@ -26,6 +26,12 @@
         </dependency>
 
         <dependency>
+            <groupId>cn.lz.security</groupId>
+            <artifactId>lz-security-plugins-jwt</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>cn.lz.sdk.generate</groupId>
             <artifactId>sdk-gen-spring-boot</artifactId>
             <version>2.0.0</version>

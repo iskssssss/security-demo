@@ -5,7 +5,7 @@ import cn.lz.demo.filter.model.R;
 import cn.lz.security.LzCoreManager;
 import cn.lz.security.annotation.DataEncodeSwitch;
 import cn.lz.security.config.TokenConfig;
-import cn.lz.security.defaults.DefaultAuthDetails;
+import cn.lz.demo.filter.model.DefaultAuthDetails;
 import cn.lz.security.annotation.ExcludeInterface;
 import cn.lz.security.token.AccessTokenUtil;
 import cn.lz.security.plugins.utils.RedisUtil;
@@ -69,7 +69,7 @@ public class AccessTokenController {
         defaultAuthDetails.setIdentifier(appKey);
         defaultAuthDetails.setCredential(appSecret);
         final String token = AccessTokenUtil.generateAccessToken(defaultAuthDetails, true);
-        final TokenConfig tokenConfig = LzCoreManager.getLzConfig().getTokenConfig();
+        final TokenConfig tokenConfig = LzCoreManager.getTokenConfig();
         return R.success(new AccessTokenVO() {{
             setAccessToken(token);
             setTtl(tokenConfig.getTimeoutForMillis());
