@@ -33,8 +33,6 @@ import java.util.Map;
 public class LoginController {
 	private final static LzLogger logger = LzLoggerUtil.getLzLogger(LoginController.class);
 
-	@Value()
-	@Bean
 	@AnonymousCheck
 	@ApiOperation(value = "登录", notes = "登录")
 	@PostMapping("/login/login.do")
