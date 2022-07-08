@@ -1,11 +1,9 @@
 package cn.lz.demo.filter.config.security.handler;
 
-import cn.lz.demo.filter.model.R;
-import cn.lz.security.defaults.DefaultDataEncoder;
-import cn.lz.tool.core.bytes.ByteUtil;
-import cn.lz.tool.core.string.StringUtil;
-import cn.lz.tool.json.JsonUtil;
+import cn.lz.security.defaults.AESDataEncoder;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
 
 /**
  * 测试加解密
@@ -14,22 +12,20 @@ import org.springframework.stereotype.Component;
  * @version 版权 Copyright(c)2021 LZ
  * @date 2021/11/10 16:43
  */
-@Component
-public class TestDataEncoder extends DefaultDataEncoder {
-
+//@Component
+public class TestDataEncoder extends AESDataEncoder {
     @Override
-    public byte[] encrypt(byte[] bytes) {
-        R r = ByteUtil.toObject(bytes, R.class);
-        Object data = r.getData();
-        if (StringUtil.isEmpty(data)) {
-            return bytes;
-        }
-        r.setData(ByteUtil.toObject(super.encrypt(ByteUtil.toBytes(data))));
-        return ByteUtil.toBytes(JsonUtil.toJsonString(r));
+    public void init(Map<String, String> params) {
+        super.init(params);
     }
 
     @Override
-    public byte[] decrypt(byte[] bytes) {
-        return super.decrypt(bytes);
+    public byte[] encrypt(byte[] bytes) {
+        return super.encrypt(bytes);
+    }
+
+    @Override
+    public byte[] decrypt(byte[] encryptData) {
+        return super.decrypt(encryptData);
     }
 }

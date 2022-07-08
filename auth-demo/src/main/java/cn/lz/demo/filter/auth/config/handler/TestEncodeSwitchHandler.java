@@ -1,8 +1,8 @@
 package cn.lz.demo.filter.auth.config.handler;
 
 import cn.lz.security.context.model.BaseRequest;
-import cn.lz.security.defaults.DefaultEncodeSwitchHandler;
-import cn.lz.security.handler.EncodeSwitchHandler;
+import cn.lz.security.context.model.BaseResponse;
+import cn.lz.security.defaults.EncodeSwitchHandlerDefault;
 import cn.lz.tool.core.string.StringUtil;
 import org.springframework.stereotype.Component;
 
@@ -14,14 +14,11 @@ import org.springframework.stereotype.Component;
  * @date 2021/11/08 10:51
  */
 @Component
-public class TestEncodeSwitchHandler extends DefaultEncodeSwitchHandler {
+public class TestEncodeSwitchHandler extends EncodeSwitchHandlerDefault {
 
 	@Override
-	public boolean isDecrypt(
-			BaseRequest<?> request
-	) {
-		//System.out.println("TestEncryptSwitchHandler.decrypt(...)");
-		final String decrypt = request.getHeader("decrypt");
+	public boolean isDecrypt(BaseRequest<?> request, BaseResponse<?> response) {
+		final String decrypt = request.getHeader("encrypt");
 		if (StringUtil.isEmpty(decrypt)) {
 			return false;
 		}
@@ -29,14 +26,11 @@ public class TestEncodeSwitchHandler extends DefaultEncodeSwitchHandler {
 	}
 
 	@Override
-	public boolean isEncrypt(
-			BaseRequest<?> request
-	) {
-		//System.out.println("TestEncryptSwitchHandler.encrypt(...)");
-		final String encrypt = request.getHeader("encrypt");
-		if (StringUtil.isEmpty(encrypt)) {
-			return false;
+	public boolean isEncrypt(BaseRequest<?> request, BaseResponse<?> response) {
+		if (super.isEncrypt(request, response)) {
+			response.setHeader("encrypt", "true");
+			return true;
 		}
-		return encrypt.intern() == "true";
+		return false;
 	}
 }

@@ -1,11 +1,10 @@
 package cn.lz.demo.filter.config.security.logger;
 
-import cn.lz.security.LzCoreManager;
 import cn.lz.security.context.model.BaseRequest;
 import cn.lz.security.context.model.BaseResponse;
+import cn.lz.security.filter.context.LzSpringBootContextManager;
 import cn.lz.security.log.BaseFilterLogHandler;
 import cn.lz.security.log.LzLoggerUtil;
-import cn.lz.security.tool.context.LzSpringBootContextManager;
 import org.springframework.stereotype.Component;
 
 /**

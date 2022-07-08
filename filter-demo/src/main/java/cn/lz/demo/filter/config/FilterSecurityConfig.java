@@ -8,7 +8,10 @@ import cn.lz.security.config.CoreConfigurerBuilder;
 import cn.lz.security.filter.config.FilterConfigurer;
 import cn.lz.security.filter.config.FilterConfigurerBuilder;
 import cn.lz.security.filter.config.SecurityFilterConfigurerAdapter;
+import cn.lz.security.filter.filters.ExcludeUrlFilter;
 import cn.lz.security.filter.utils.FilterUtil;
+import cn.lz.security.fun.LzFilterAuthStrategy;
+import cn.lz.security.log.LzLoggerUtil;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.Resource;
@@ -33,22 +36,6 @@ public class FilterSecurityConfig extends SecurityFilterConfigurerAdapter {
 
 	@Override
 	protected void filter(FilterConfigurerBuilder<FilterConfigurer> filterConfigurer) {
-		System.out.println(LzCoreManager.getLzConfig().print());
-		filterConfigurer
-				.filterConfig()
-				.linkInterfacesFilter(
-						FilterUtil.accessTokenFilter(),
-						FilterUtil.ipFilter(params -> {
-							final LinkedList<String> ipList = new LinkedList<>();
-							ipList.add("*");
-							return ipList;
-						}),
-						FilterUtil.requestInterfaceFilter(params -> {
-							UrlHashSet urlHashSet = new UrlHashSet();
-							urlHashSet.add("/**");
-							return urlHashSet;
-						}),
-						testInterfacesFilter
-				).setLogBeforeFilterClass(FilterUtil.RequestInterfaceFilter.class);
+		System.out.println(LzCoreManager.getLzConfig().print());;
 	}
 }

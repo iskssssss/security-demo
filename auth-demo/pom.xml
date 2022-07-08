@@ -23,11 +23,30 @@
         <dependency>
             <groupId>cn.lz.security</groupId>
             <artifactId>lz-security-auth-spring-boot-starter</artifactId>
+
+            <exclusions>
+                <exclusion>
+                    <groupId>cn.lz.security</groupId>
+                    <artifactId>lz-security-auth</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.lz.security</groupId>
+            <artifactId>lz-security-auth</artifactId>
+            <version>2.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>cn.lz.security</groupId>
             <artifactId>lz-security-plugins-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-captcha</artifactId>
+            <version>5.8.4.M1</version>
         </dependency>
     </dependencies>
 

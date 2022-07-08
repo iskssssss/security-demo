@@ -1,10 +1,11 @@
 package cn.lz.demo.filter.config.security.filter;
 
 import cn.lz.security.exception.base.SecurityException;
+import cn.lz.security.filter.context.SpringBootContextTheadLocal;
+import cn.lz.security.filter.filters.LzInterfacesFilter;
+import cn.lz.security.filter.mode.LzRequest;
+import cn.lz.security.filter.mode.LzResponse;
 import cn.lz.security.log.LzLoggerUtil;
-import cn.lz.security.tool.filters.LzInterfacesFilter;
-import cn.lz.security.tool.mode.LzRequest;
-import cn.lz.security.tool.mode.LzResponse;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,7 +19,12 @@ import org.springframework.stereotype.Component;
 public class TestInterfacesFilter extends LzInterfacesFilter {
 
     @Override
-    public boolean doFilter(LzRequest lzRequest, LzResponse lzResponse, Object... params) throws SecurityException {
+    public boolean doFilter(
+            LzRequest lzRequest,
+            LzResponse lzResponse,
+            SpringBootContextTheadLocal context,
+            Object... params
+    ) throws SecurityException {
         LzLoggerUtil.info(this.getClass(), "自定义测试过滤器-过滤");
         return yes();
     }
