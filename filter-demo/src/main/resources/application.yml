@@ -44,7 +44,7 @@ lz:
       # [非必需] 是否加解密(默认false)
       encrypt: true
       cipher-save-key: data
-      encrypt-handler-class: cn.lz.security.defaults.AESDataEncoder
+#      encrypt-handler-class: cn.lz.security.defaults.AESDataEncoder
       params:
         key: 1234567812345678
         iv: 1234567812345678

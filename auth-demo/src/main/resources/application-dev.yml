@@ -1,0 +1,102 @@
+spring:
+  redis:
+    # Redis 数据库索引
+    database: 0
+    #     Redis 服务器地址
+    host: 127.0.0.1
+#    host: 192.168.35.128
+    #     Redis 服务器端口
+    port: 6379
+    # Redis 服务器连接密码
+#    password: 123456
+    # 连接池设置
+    pool:
+      # 最大连接数量 -1无限制
+      max-active: 8
+      # 最大阻塞等待时间 -1无限制
+      max-wait: -1
+      # 最大空闲连接
+      max-idle: 8
+      # 最小空闲连接
+      min-idle: 0
+    # 连接超时时间
+    timeout: 1000
+  datasource:
+    druid:
+      stat-view-servlet:
+        enabled: true
+        loginUsername: admin
+        loginPassword: 123456
+    dynamic:
+      druid:
+        initial-size: 5
+        min-idle: 5
+        maxActive: 20
+        maxWait: 60000
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        #validationQuery: SELECT 1 FROM DUAL
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 20
+        filters: stat,slf4j
+        connectionProperties: druid.stat.mergeSql\=true;druid.stat.slowSqlMillis\=5000
+      datasource:
+        master:
+          type: com.alibaba.druid.pool.DruidDataSource
+          driver-class-name: org.postgresql.Driver
+          url: jdbc:postgresql://localhost:5432/file-test?characterEncodeing=utf8&TimeZone=Asia/Shanghai&stringtype=unspecified
+          username: postgres
+          password: 123456
+
+lz:
+  security:
+    # [非必需] 是否打印日志信息(默认true)
+    console-log-print: true
+    # Token相关配置
+    token-config:
+      # [非必需] Token存放标识(默认Authorization)
+      name: Authorization
+      # [非必需] 类型(默认UUID)(UUID、JWT)(可通过重写IAccessTokenHandler.class来实现自定义token类型,重写后此项将无效)
+      #type: JWT
+      # [非必需] 过期时间(秒)(默认3600秒)
+      timeout: 3600
+    # 加解密相关配置
+    encrypt-config:
+      # [非必需] 是否加解密(默认false)
+      encrypt: true
+      # [未重写请求加解密处理器时该项为必需] 公钥
+      #pub-key: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCgM+P2Z6gNTyAUTti0khzHqvoj04QYRulWrywOoPOKDjAisdZ20zCl/NMov20T0+kc9DD8PkV+SB7g4VGgXKSWHQRYqUUq1GKtlUqEe6G0MLQ4M5nj7/Oh+ZcFM0yIzvNB/ZG2dMgY33UL4m4/NqslWzeY0msUuoehxcYqffJipQIDAQAB
+      # [未重写请求加解密处理器时该项为必需] 私钥
+      #pri-key: MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAKAz4/ZnqA1PIBRO2LSSHMeq+iPThBhG6VavLA6g84oOMCKx1nbTMKX80yi/bRPT6Rz0MPw+RX5IHuDhUaBcpJYdBFipRSrUYq2VSoR7obQwtDgzmePv86H5lwUzTIjO80H9kbZ0yBjfdQvibj82qyVbN5jSaxS6h6HFxip98mKlAgMBAAECgYEAjW6COM02XdmXFpatVm0QH25guzRHEC+6XJ71pEyP9TelY1vhXLIB5uiXewfUwoZ47OjgPjCzpVMCf8IsEAj5+28q615z3TJp+Tcx1FcufJEAcPhUUlbaYrnFrNSD+ePq3bon5Fc+e5cuVCqHqB4nJ4LhmdP9mvRPLpYYNXWELNkCQQDOXbMxtlu43obLq+Nh7hb8cVbAawukCZkRAkfIxu/3PkH4sIIm8WzEyd3JNU3rijGFuIPX+gLeqKeWOF3HF8+3AkEAxrvWgymg0x2FABmQrjlKv8PnIve4T2XI22BL7HFo/H+2IdPJYeMnpmqZ4zCPN9Kn4XSnhhFTVbl/KqpkwSWogwJBAJJYiJechvdXd6hAQYRVYB+uEKNsRlkSJWaWg2mzCsH/eLFwGxya4VO9BHeIQbXjzrLR403qktZsLEyvtHFYRYkCQDHYr2daq6IIR3HM98MbT6plwrW8mJghmY2cy65Ui9a5Wb+GVX6d8TYGiu63IVUJG16rWdGAyvw3eLQE5RylC20CQQDNuow+pCZXMWq631vKjsHwBT3inq5HU9V+CHew6ECMdmIKi2gJcAe7LeKW39tMS0qQ9APletEiLbA7C43q163T
+      cipher-save-key: CIPHER
+#      encrypt-handler-class: cn.lz.security.defaults.AESDataEncoder
+      params:
+        key: hebT*:>?c=!~.EN%
+        iv: wTjf/Fk[HcE%0.)^
+    filter-config:
+      exclude-url-list:
+        - /api/auth/login/login.do
+        - /favicon.ico
+        - /webjars/**
+        - /doc.html
+        - /swagger-resources
+        - /v2/api-docs
+        - /v2/api-docs-ext
+      include-url-list:
+        - /**
+    auth-config:
+      auth-url-list:
+        - /api/auth/logout/logout.do
+      anonymous-url-list:
+        - /api/auth/login/login.do
+      login-config:
+        login-url: /api/auth/login/login.do1
+        identifier-key: username
+        credential-key: password
+      logout-config:
+        logout-url: /api/auth/logout/logout.do1
+  file:
+    save-path: D:\upload

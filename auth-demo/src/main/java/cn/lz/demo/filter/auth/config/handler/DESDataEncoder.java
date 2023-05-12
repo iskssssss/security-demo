@@ -16,7 +16,7 @@ import java.util.Map;
  * @version 版权 Copyright(c)2022 杭州设维信息技术有限公司
  * @date 2022/7/4 10:09
  */
-@Component
+//@Component
 public class DESDataEncoder implements DataEncoder {
     private DES des;
 
